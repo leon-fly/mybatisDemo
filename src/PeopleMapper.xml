@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leon.mabatisdemo.mapper.PeopleMapper" >
+	<resultMap id="BaseResultMap" type="com.leon.mybatisdemo.dto.People" >
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="sex" property="sex" jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="queryPeople" resultType="com.leon.mybatisdemo.dto.People" >
+		select * from people where id = #{id}
+	</select>
+	<insert id="insertPeople" statementType="PREPARED">
+		insert into people values(#{id},#{name},#{sex});
+	</insert>
+	<insert id="insertPeoples" statementType="PREPARED">
+		insert into people values
+		<foreach item="item" collection="list" separator=",">
+   			 (#{item.id},#{item.name},#{item.sex})	
+  		</foreach>
+	</insert>
+	<update id="updatePeople" parameterType="com.leon.mybatisdemo.dto.People" statementType="PREPARED">
+		update people set name=#{name},sex=#{sex} where id=#{id}
+	</update>
+	<delete id="deletePeople" parameterType="com.leon.mybatisdemo.dto.People" statementType="PREPARED">
+		delete from people where id=#{id}
+	</delete>
+</mapper>

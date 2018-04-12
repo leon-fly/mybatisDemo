@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+  <environments default="sit">
+    <environment id="sit">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://10.100.135.220:3306/test"/>
+        <property name="username" value="root"/>
+        <property name="password" value="3306"/>
+      </dataSource>
+    </environment>
+    <environment id="uat">
+      <transactionManager type="JDBC"/>
+      <dataSource type="POOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://10.100.135.220:3306/test"/>
+        <property name="username" value="root"/>
+        <property name="password" value="3306"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <mappers>
+  	<!-- 可以是xml方式的，也可以是代码加注解 -->
+    <mapper resource="PeopleMapper.xml"/>
+    <package name="com.leon.mybatisdemo.mapper"/> <!-- 指定整个包下全部类为mapper类 -->
+   <!--  <mapper class="com.leon.mybatisdemo.mapper.PeopleMapper"/>  -->
+  </mappers>
+</configuration>
