@@ -21,30 +21,30 @@ public class XmlWayMainDemo {
 		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 		SqlSession session = sqlSessionFactory.openSession();
 		try{
+			//插入1条
+			session.insert("com.leon.mabatisdemo.mapper.PeopleMapper.insertPeople", new People(1,"张三","M"));
 			//查询 - xml方式
 			People testleon = session.selectOne("com.leon.mabatisdemo.mapper.PeopleMapper.queryPeople","1");
 			System.out.println(testleon);
-			//插入1条
-			//session.insert("mapper.TestLeonMapper.insertPeople", new People(4,"Zhang","男"));
 			//插入多条
-			People p1 = new People(1, "Leon", "M");
-			People p2 = new People(2, "zhang", "M");
-			People p3 = new People(3, "Li", "F");
+			/*People p1 = new People(2, "Leon", "M");
+			People p2 = new People(3, "zhang", "M");
+			People p3 = new People(4, "Li", "F");
 //			People[] peoples = new People[]{p1,p2,p3}; //数组无法作为参数
 			ArrayList<People> peoples2 = new ArrayList<People>();
 			peoples2.add(p1);
 			peoples2.add(p2);
 			peoples2.add(p3);
-			session.insert("com.leon.mabatisdemo.mapper.PeopleMapper.insertPeoples",peoples2);
+			session.insert("com.leon.mabatisdemo.mapper.PeopleMapper.insertPeoples",peoples2);*/
 			
 			//更新
-			People upp1 = new People(1,"updateName","M");
-			session.update("com.leon.mabatisdemo.mapper.PeopleMapper.updatePeople", upp1);
+			/*People upp1 = new People(1,"updateName","M");
+			session.update("com.leon.mabatisdemo.mapper.PeopleMapper.updatePeople", upp1);*/
 			
 			//删除
-			People delp1 = new People();
+			/*People delp1 = new People();
 			delp1.setId(2);
-			session.delete("com.leon.mabatisdemo.mapper.PeopleMapper.deletePeople",delp1);
+			session.delete("com.leon.mabatisdemo.mapper.PeopleMapper.deletePeople",delp1);*/
 			
 		}finally{
 			session.commit();
